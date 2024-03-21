@@ -1,8 +1,14 @@
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 
 const Posts = () => {
     const posts = useLoaderData()
-    console.log(posts);
+
+    const naviget = useNavigate()
+
+    const hendleNaviget = (id) => {
+        naviget(`/post/${id}`)
+    }
+
     return (
         <div>
             <h2>All Posts</h2>
@@ -21,6 +27,8 @@ const Posts = () => {
                             <Link to={`/post/${post.id}`}>
                             <button>Details</button>
                             </Link>
+
+                            <button onClick={() => hendleNaviget(post.id)}>Naviget Deatais</button>
                         </div>
                     ))
                 }
